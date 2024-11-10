@@ -14,7 +14,5 @@ import { UrlShortnerModule } from "./url-shortner/url-shortner.module";
     AuthModule,
     UrlShortnerModule
   ],
-  // controllers: [AppController],
-  // providers: [AppService],
 })
 export class AppModule { }

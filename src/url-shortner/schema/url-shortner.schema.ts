@@ -11,12 +11,6 @@ export class Url {
   @Prop({ required: true, unique: true })
   shortUrl: string;
 
-  // @Prop({ type: Types.ObjectId, ref: 'User', required: true })
-  // userId: Types.ObjectId;
-
-  // @Prop({ default: 0 })
-  // clicks: number;
-
   @Prop({ default: Date.now })
   createdAt: Date;
 }

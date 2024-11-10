@@ -33,10 +33,11 @@ export class AuthService {
     return { message: 'User registered successfully' }
   }
 
-  async signIn(signInDto: SignInAuthDto): Promise<{ token: string }> {    
+  async signIn(signInDto: SignInAuthDto): Promise<{ token: string,username: string }> {
     const { email, password } = signInDto
 
     const user = await this.userModel.findOne({ email })
+        
     if (!user)
       throw new UnauthorizedException('Invalid email or password')
 
@@ -51,9 +52,10 @@ export class AuthService {
 
     const token = this.jwtService.sign({
       id: user._id,
-      email: user.email
+      email: user.email,
+      username: user.username
     })
 
-    return { token }
+    return { token, username: user.username }
   }
 }

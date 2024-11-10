@@ -20,9 +20,7 @@ export class UrlShortnerService {
       return existingUrl
     }
 
-    const shortUrl = shortid.generate()
-    console.log('shorrr',shortUrl);
-    
+    const shortUrl = shortid.generate()    
 
     try {
       const newUrl = await this.urlModel.create({
@@ -40,22 +38,7 @@ export class UrlShortnerService {
     if (!url) {
       throw new NotFoundException('Short URL not found')
     }
-    await url.save()
     return url
   }
-
-  // async getUserUrls(userId:string):Promise<UrlDocument[]>{
-  //   return this.urlModel.find({userId:new Types.ObjectId(userId)}).sort({createdAt:-1})
-  // }
-
-  // async deleteUrl(urlId:string, userId:string):Promise<void>{
-  //   const url=await this.urlModel.findOneAndDelete({
-  //     _id:new Types.ObjectId(userId),
-  //     userId:new Types.ObjectId(userId),
-  //   })
-
-  //   if(!url){
-  //     throw new NotFoundException('Url not found or unauthorized')
-  //   }
-  // }
 }
+ 
